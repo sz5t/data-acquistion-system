@@ -1,0 +1,25 @@
+
+ <ul nz-menu [nzMode]="config.model ? config.model :'inline'" [nzTheme]="config.theme ? config.theme : 'light'" [nzInlineCollapsed]="isCollapsed" [ngStyle]="config?.style ? config?.style : {}">
+    <ng-container *ngTemplateOutlet="menuTpl; context: {$implicit: config.menus}"></ng-container>
+    <ng-template #menuTpl let-menus>
+      <ng-container *ngFor="let menu of menus">
+        <li (click)="linkTo(menu)" nz-menu-item [nzPaddingLeft]="menu.level * 20" *ngIf="!menu.children" [nzDisabled]="menu.disabled" [nzSelected]="menu.selected">
+          <span title>
+            <i nz-icon [type]="menu.icon" *ngIf="menu.icon"></i>
+            <span>{{menu.title}}</span>
+          </span>
+        </li>
+        <li (click)="!menu.children && linkTo(menu)" nz-submenu [nzPaddingLeft]="menu.level * 20" *ngIf="menu.children" [nzOpen]="menu.open" [nzDisabled]="menu.disabled">
+          <span title>
+            <i nz-icon [type]="menu.icon" *ngIf="menu.icon"></i>
+            <span>
+              {{menu.title}}
+            </span>
+          </span>
+          <ul>
+            <ng-container *ngTemplateOutlet="menuTpl; context: {$implicit: menu.children}"></ng-container>
+          </ul>
+        </li>
+      </ng-container>
+    </ng-template>
+</ul>

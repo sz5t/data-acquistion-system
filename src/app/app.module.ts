@@ -1,7 +1,6 @@
+import { PagesModule } from './pages/pages.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
@@ -16,15 +15,10 @@ import { DefaultComponent } from './pages/default/default.component';
 registerLocaleData(zh);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    PassportComponent,
-    DefaultComponent
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    PagesModule,
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,

@@ -1,0 +1,15 @@
+<nz-layout>
+  <nz-sider [nzWidth]="200" style="background:#fff" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="triggerTemplate">
+      <app-layout-menu [isCollapsed]="isCollapsed"></app-layout-menu>
+  </nz-sider>
+  <nz-layout style="padding:0 24px 24px">
+    <nz-breadcrumb style="margin:16px 0;">
+      <nz-breadcrumb-item>Home 1</nz-breadcrumb-item>
+      <nz-breadcrumb-item>List 2</nz-breadcrumb-item>
+      <nz-breadcrumb-item>App 3</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <nz-content style="background:#e4e4e4; padding: 24px; min-height: 800px; height:100%!important; height:800px;overflow: hidden;">
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
