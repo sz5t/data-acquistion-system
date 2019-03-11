@@ -1,3 +1,18 @@
-<p>
-  passport works!
-</p>
+<div class="container">
+  <header-i18n showLangText="false" class="langs"></header-i18n>
+  <div class="wrap">
+    <div class="top">
+      <div class="head">
+        <img class="logo" src="./assets/logo-color.svg">
+        <span class="title">SmartOne</span>
+      </div>
+      <div class="desc"></div>
+    </div>
+    <router-outlet></router-outlet>
+    <global-footer [links]="links">
+      Copyright
+      <i class="anticon anticon-copyright"></i> 2019
+      <a href="//github.com/cipchk" target="_blank">SmartOne</a>出品
+    </global-footer>
+  </div>
+</div>

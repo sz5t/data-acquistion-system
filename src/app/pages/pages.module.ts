@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from './../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,7 +20,8 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
     CommonModule,
     NgZorroAntdModule,
     PagesRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    FormsModule
   ]
 })
 export class PagesModule { }

@@ -7,6 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PassportComponent implements OnInit {
 
+  public links = [
+    {
+      title: '帮助',
+      href: '',
+    },
+    {
+      title: '隐私',
+      href: '',
+    },
+    {
+      title: '条款',
+      href: '',
+    },
+  ];
   constructor() { }
 
   ngOnInit() {
