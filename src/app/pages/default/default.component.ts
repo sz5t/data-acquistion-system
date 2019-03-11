@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-
+import { ApiService } from '../../core/services/api-service';
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
@@ -9,6 +9,13 @@ export class DefaultComponent implements OnInit {
 
   isCollapsed = false;
   triggerTemplate = null;
+  private _apiResource;
+  public get apiResource() {
+    return this._apiResource;
+  }
+  public set apiResource(value) {
+    this._apiResource = value;
+  }
   @ViewChild('trigger') customTrigger: TemplateRef<void>;
   config = {
     model: 'horizontal',
@@ -31,13 +38,22 @@ export class DefaultComponent implements OnInit {
       }
     ]
   };
-  constructor() { }
+  constructor(private _http: ApiService) {
+    this._apiResource = this._http;
+  }
 
   changeTrigger(): void {
     this.triggerTemplate = this.customTrigger;
   }
 
   ngOnInit() {
+    const ss = this._load('common/GetCase', {}, 'get');
+    console.log('***********', ss);
+  }
+
+  private async _load(url, params, method) {
+    const mtd = method === 'proc' ? 'post' : method;
+    return this._http[mtd](url, params).toPromise();
   }
 
 }
