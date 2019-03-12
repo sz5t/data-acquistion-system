@@ -15,9 +15,10 @@ import zh from '@angular/common/locales/zh';
 import { LoginComponent } from './pages/passport/login/login.component';
 import { PassportComponent } from './pages/passport/passport.component';
 import { DefaultComponent } from './pages/default/default.component';
-import { ApiService } from './core/services/api-service';
-import { DefaultInterceptor } from './core/net/default.interceptor';
+// import { ApiService } from './core/services/api-service';
+// import { DefaultInterceptor } from './core/net/default.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpService } from './core/services/http.service';
 // import { TranslateService } from '@ngx-translate/core';
 
 @NgModule({
@@ -31,7 +32,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     BrowserAnimationsModule
   ],
   providers: [
-    ApiService
+    HttpService
   ],
   bootstrap: [AppComponent]
 })

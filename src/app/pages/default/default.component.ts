@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import { ApiService } from '../../core/services/api-service';
+import { HttpService } from '../../core/services/http.service';
+// import { ApiService } from '../../core/services/api-service';
 @Component({
   selector: 'app-default',
   templateUrl: './default.component.html',
@@ -38,22 +39,25 @@ export class DefaultComponent implements OnInit {
       }
     ]
   };
-  constructor(private _http: ApiService) {
-    this._apiResource = this._http;
+  constructor(private httpService: HttpService) {
+    this._apiResource = this.httpService;
   }
 
   changeTrigger(): void {
     this.triggerTemplate = this.customTrigger;
   }
 
-  ngOnInit() {
-    const ss = this._load('common/GetCase', {}, 'get');
-    console.log('***********', ss);
+  async ngOnInit() {
+    // const ss = await this._load('common/GetCase', {}, 'get');
+    console.log('***********');
+    this.httpService.get('/assets/app-data.json').subscribe(res => {
+      console.log('res', res);
+    });
   }
 
   private async _load(url, params, method) {
     const mtd = method === 'proc' ? 'post' : method;
-    return this._http[mtd](url, params).toPromise();
+    return this.httpService.get(url).toPromise();
   }
 
 }
