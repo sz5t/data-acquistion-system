@@ -17,18 +17,8 @@ import { PassportComponent } from './pages/passport/passport.component';
 import { DefaultComponent } from './pages/default/default.component';
 import { ApiService } from './core/services/api-service';
 import { DefaultInterceptor } from './core/net/default.interceptor';
-import { StartupService } from './core/services/startup/startup.service';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TranslateService } from '@ngx-translate/core';
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, `assets/i18n/`, '.json');
-}
-export function StartupServiceFactory(
-  startupService: StartupService
-): Function {
-  return () => startupService.load();
-}
-registerLocaleData(zh);
+// import { TranslateService } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [],
@@ -40,21 +30,8 @@ registerLocaleData(zh);
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN },
-  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: DefaultInterceptor,
-    multi: true
-  },
-    StartupService,
-  {
-    provide: APP_INITIALIZER,
-    useFactory: StartupServiceFactory,
-    deps: [StartupService],
-    multi: true
-  },
-    ApiService,
-    TranslateService
+  providers: [
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  form: FormGroup;
+  public form: FormGroup;
   error = '';
   type = 0;
 

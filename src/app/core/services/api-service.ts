@@ -1,10 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
-import { HttpHeaders, HttpParams, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpParams, HttpClient, HttpHandler } from '@angular/common/http';
 import { SystemResource } from './system-resource';
 import { CommonTools } from './common-tools';
-import { AlainThemeConfig } from './http/theme.config';
-import { _HttpClient } from './http/http.client';
-import { DA_SERVICE_TOKEN, ITokenService } from './http/interface';
 @Injectable()
 export class ApiService {
     public httpClient;
@@ -12,7 +9,7 @@ export class ApiService {
       //  @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService,
         private http: HttpClient
     ) {
-        this.httpClient = new _HttpClient(http, new AlainThemeConfig());
+        this.httpClient = new HttpClient();
     }
 
     public setHeaders() {
